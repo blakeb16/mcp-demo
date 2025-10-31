@@ -1,0 +1,37 @@
+name = "mcp-local-places"
+main = "dist/index.js"
+compatibility_date = "2024-01-01"
+
+# Account ID - add your Cloudflare account ID here
+# account_id = "your-account-id"
+
+# Environment variables
+[vars]
+# Add non-sensitive vars here
+
+# Secrets (set via: wrangler secret put GEMINI_API_KEY)
+# GEMINI_API_KEY - stored securely
+
+# KV Namespace for caching
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "local-places"
+database_id = "84a81534-c4eb-45b3-9e24-bb6b5f14de8a"
+
+# Worker configuration
+[build]
+command = "npm run build"
+
+# Static assets configuration
+[assets]
+directory = "src/public"
+binding = "ASSETS"
+
+# Development configuration
+[dev]
+port = 8787

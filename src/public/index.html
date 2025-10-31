@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Places Explorer - MCP Chatbot</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>Local Places Explorer</h1>
+      <p class="subtitle">Discover cafes, restaurants, parks, and more</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Map Section -->
+      <div class="map-section">
+        <div id="map"></div>
+        <div class="map-controls">
+          <div class="legend" id="legend">
+            <h4>Place Categories</h4>
+            <div class="legend-item">
+              <span class="legend-marker cafe"></span>
+              <span>Cafes</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker restaurant"></span>
+              <span>Restaurants</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker park"></span>
+              <span>Parks</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker bookstore"></span>
+              <span>Bookstores</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker gym"></span>
+              <span>Gyms</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker grocery"></span>
+              <span>Grocery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Section -->
+      <div class="chat-section">
+        <div class="chat-header">
+          <h3>Places Assistant</h3>
+          <button id="resetChat" class="btn-reset" title="Reset conversation">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+              <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot-message">
+            <div class="message-content">
+              <p><strong>Available Tools:</strong></p>
+              <p>• <strong>search_places</strong> - Find places by category, rating, price, or location</p>
+              <p>• <strong>get_place_details</strong> - Get full details for a specific place</p>
+              <p>• <strong>add_place</strong> - Add a new place to the database</p>
+              <p>• <strong>update_place</strong> - Update existing place information</p>
+              <p>• <strong>delete_place</strong> - Remove a place from the database</p>
+              <p>• <strong>get_statistics</strong> - View stats by category</p>
+              <p>• <strong>places_nearby</strong> - Find places within a radius</p>
+              <p>• <strong>search_by_name</strong> - Search places by name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-container">
+          <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <form class="chat-input" id="chatForm">
+            <textarea
+              id="messageInput"
+              placeholder="Ask about local places... (Shift+Enter for new line)"
+              autocomplete="off"
+              required
+              rows="1"
+            ></textarea>
+            <button type="submit" id="sendButton">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 10l16-8-8 16-2-8-6-2z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Place Info Panel -->
+    <div class="place-info" id="placeInfo" style="display: none;">
+      <button class="close-btn" id="closePlaceInfo">&times;</button>
+      <h3 id="placeName">Place Name</h3>
+      <div id="placeDetails">
+        <p>Click on a marker to see details</p>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: flex;">
+      <div class="spinner"></div>
+      <p>Loading places...</p>
+    </div>
+  </div>
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+
+  <!-- Custom JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

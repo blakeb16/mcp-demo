@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(dir:*)",
+      "Bash(npm run build:*)",
+      "Bash(rm:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(npm run deploy:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

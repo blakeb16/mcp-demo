@@ -1,0 +1,26 @@
+{
+  "name": "mcp-census-chatbot",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["mcp", "census", "chatbot", "cloudflare", "gemini"],
+  "author": "",
+  "license": "ISC",
+  "description": "MCP server with census data map and AI chatbot",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@modelcontextprotocol/sdk": "^1.20.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251014.0",
+    "@types/node": "^24.9.2",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.45.2"
+  }
+}
