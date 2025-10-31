@@ -12,44 +12,7 @@ Demonstrates full **CRUD operations** with Cloudflare D1 (SQLite) database.
 - **D1 Database** - Cloudflare's serverless SQLite database
 - **MCP Protocol** - 8 tools showcasing database operations
 
-## Quick Start
 
-### 1. Install dependencies
-```bash
-npm install
-```
-
-### 2. Set up Cloudflare D1 database
-
-Create the D1 database:
-```bash
-npx wrangler d1 create local-places
-```
-
-Copy the database ID from the output and update `wrangler.toml` with your database ID.
-
-Initialize the database with schema and seed data:
-```bash
-npx wrangler d1 execute local-places --local --file=./schema.sql
-npx wrangler d1 execute local-places --local --file=./seed.sql
-```
-
-### 3. Add API key to `.dev.vars`
-Create a `.dev.vars` file:
-```
-GEMINI_API_KEY=your_key_here
-```
-
-Get a free Gemini API key at: https://aistudio.google.com/app/apikey
-
-### 4. Build and run
-```bash
-npm run build
-npm run dev
-```
-
-### 5. Open the app
-Visit: **http://localhost:8787/index.html**
 
 ## MCP Tools (Full CRUD)
 
@@ -95,35 +58,7 @@ CREATE TABLE places (
 
 ## Deployment
 
-### Deploy to Cloudflare Workers
-
-1. Login to Cloudflare:
-```bash
-npx wrangler login
-```
-
-2. Create production database:
-```bash
-npx wrangler d1 create local-places
-```
-
-3. Update `wrangler.toml` with the production database ID
-
-4. Initialize production database:
-```bash
-npx wrangler d1 execute local-places --file=./schema.sql
-npx wrangler d1 execute local-places --file=./seed.sql
-```
-
-5. Add API key as secret:
-```bash
-npx wrangler secret put GEMINI_API_KEY
-```
-
-6. Deploy:
-```bash
-npm run deploy
-```
+#
 
 ## Tech Stack
 
@@ -166,6 +101,4 @@ npm run deploy
 - [MCP Protocol](https://modelcontextprotocol.io/)
 - [Gemini API](https://ai.google.dev/docs)
 
----
 
-Built to showcase MCP protocol with full CRUD operations using Cloudflare D1.
